@@ -1,0 +1,13 @@
+{
+    "name": "imports",
+    "version": "0.0.0",
+    "description": "",
+    "main": "index.js",
+    "private": true,
+    "license": "MIT",
+    "dependencies": {
+        "h": "github:gc-victor/h#main",
+        "react": "^17.0.2",
+        "u": "github:gc-victor/u#main"
+    }
+}

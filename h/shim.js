@@ -1,0 +1,1 @@
+import e from"h";var c="__F__";function l(n,r,t){return typeof n=="function"?n({children:[].slice.call(arguments,2),...r||{}}):n!==c?e(n,r||{},t):[].slice.call(arguments,2)}export{l as default,c as fragment,l as h};

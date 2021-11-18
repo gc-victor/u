@@ -1,0 +1,31 @@
+{
+    "name": "u",
+    "description": "U is a micro-library (<1 KB) to create primitive UI components.",
+    "version": "0.0.0",
+    "license": "MIT",
+    "private": true,
+    "typings": "src/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git@gc-victor:gc-victor/u.git"
+    },
+    "keywords": [],
+    "devDependencies": {
+        "esbuild": "0.13.4",
+        "esm": "3.2.25",
+        "gzip-size": "6.0.0",
+        "h": "github:gc-victor/h#main",
+        "html-element": "^2.3.1",
+        "jsdom": "18.0.0",
+        "prettier": "2.4.1",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "t-t": "git+https://github.com/gc-victor/t-t.git#main"
+    },
+    "dependencies": {
+        "c-c": "github:gc-victor/c-c#main"
+    }
+}
