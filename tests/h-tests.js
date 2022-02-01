@@ -1,6 +1,7 @@
 import { expect, test as t, window } from 't-t';
 import jsdom from 'jsdom';
-import hComponent from '../src/h-component';
+import hComponent, { styles } from '../src/h-component';
+import { Fragment } from '../src/h-shim';
 
 const { JSDOM } = jsdom;
 const dom = new JSDOM(`<!DOCTYPE html><body><div id="app"><p>Hello world!</p></div></body>`, {
@@ -117,6 +118,28 @@ test('should no set aria as class', () => {
     ).toBe('<div aria-test="test" class="c3183262666">Test</div>');
 });
 
+test('should allow Fragment', () => {
+    expect(
+        hComponent({
+            tag: 'div',
+            props: {
+                'aria-test': 'test',
+                style: { color: 'blue' }
+            },
+            children: ['Test', Fragment({ children: [
+                    hComponent({
+                        tag: 'span',
+                        children: ['Test 1'],
+                    }),
+                    hComponent({
+                        tag: 'span',
+                        children: ['Test 2'],
+                    })
+                ] })],
+        }).outerHTML
+    ).toBe('<div aria-test="test" class="c3183262666">Test<span>Test 1</span><span>Test 2</span></div>');
+});
+
 test('should exclude the global attributes from the class creation', () => {
     expect(
         hComponent({
@@ -152,3 +175,11 @@ test('should exclude the global attributes from the class creation', () => {
         }).outerHTML
     ).toBe(`<div accesskey="0" autocapitalize="0" autofocus="0" contenteditable="0" dir="0" draggable="0" enterkeyhint="0" hidden="0" id="0" inputmode="0" is="0" itemid="0" itemprop="0" itemref="0" itemscope="0" itemtype="0" lang="0" nonce="0" part="0" role="0" slot="0" spellcheck="0" tabindex="0" title="0" translate="0">Test</div>`);
 });
+
+// Note if is SSR
+if (!process.env.TEST) {
+    test('should extract the styles', () => {
+       expect(styles()).toBe('.c3183262666{color:blue}');
+    });
+}
+

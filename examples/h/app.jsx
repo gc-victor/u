@@ -21,24 +21,28 @@ const add = (ev) => {
 };
 
 function CounterButton(props) {
-    return <Button
-        background="#eee"
-        border="0"
-        borderRadius="4px"
-        color="black"
-        padding="8px 24px"
-        style={{
-            ':hover': {
-                background: 'black',
-                color: 'white',
-            },
-            ':focus': {
-                background: 'black',
-                color: 'white',
-            },
-        }}
-        {...props}
-    />;
+    console.log({ props });
+
+    return (
+        <Button
+            background="#eee"
+            border="0"
+            borderRadius="4px"
+            color="black"
+            padding="8px 24px"
+            style={{
+                ':hover': {
+                    background: 'black',
+                    color: 'white',
+                },
+                ':focus': {
+                    background: 'black',
+                    color: 'white',
+                },
+            }}
+            {...props}
+        />
+    );
 }
 
 const Counter = () => (

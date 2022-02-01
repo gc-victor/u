@@ -5,14 +5,14 @@
   var a = process.env.TEST ? false : i;
   var u = /^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|fill|flood|font|glyph(?!R)|horiz|marker(?!H|W|U)|overline|paint|stop|strikethrough|stroke|text(?!L)|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/;
   var d = {};
-  function m(o, n2 = {}, l = []) {
-    let t2 = o === "svg" && !a ? document.createElementNS("http://www.w3.org/2000/svg", "svg") : document.createElement(o), c = Object.keys(n2 || {}), f = c.length, h2 = l.length;
-    for (let s = 0; s < h2; s++) {
-      let e2 = l[s];
-      e2 && o === "svg" ? t2.innerHTML = `${t2.innerHTML}${e2.outerHTML}` : e2 && t2.appendChild(typeof e2 == "string" ? document.createTextNode(e2) : e2);
+  function m(o2, n2 = {}, l = []) {
+    let t2 = o2 === "svg" && !a ? document.createElementNS("http://www.w3.org/2000/svg", "svg") : document.createElement(o2), c2 = Object.keys(n2 || {}), f = c2.length, h2 = l.length;
+    for (let s2 = 0; s2 < h2; s2++) {
+      let e2 = l[s2];
+      e2 && o2 === "svg" ? t2.innerHTML = `${t2.innerHTML}${e2.outerHTML}` : e2 && t2.appendChild(typeof e2 == "string" ? document.createTextNode(e2) : e2);
     }
-    for (let s = 0; s < f; s++) {
-      let e2 = c[s];
+    for (let s2 = 0; s2 < f; s2++) {
+      let e2 = c2[s2];
       if (e2 && /^on/.test(e2)) {
         let r2 = e2.toLowerCase().substring(2);
         t2.__handler__ = t2.__handler__ || {}, t2.__handler__[r2] = n2[e2], !d[r2] && document.addEventListener(r2, k), d[r2] = 1;
@@ -25,12 +25,12 @@
     }
     return t2;
   }
-  var k = (o) => {
-    let n2 = o.target, l = o.type;
+  var k = (o2) => {
+    let n2 = o2.target, l = o2.type;
     for (; n2 !== null; ) {
       let t2 = n2.__handler__ && n2.__handler__[l];
       if (t2) {
-        t2(o);
+        t2(o2);
         return;
       }
       n2 = n2.parentNode;
@@ -39,42 +39,43 @@
   var w = m;
 
   // src/h-shim.js
-  var fragment = "__F__";
   function h(type, props, children) {
     if (typeof type === "function") {
       return type({ children: [].slice.call(arguments, 2), ...props || {} });
     }
-    return type !== fragment ? w(type, props || {}, children) : [].slice.call(arguments, 2);
+    return w(type, props || {}, children);
   }
 
-  // node_modules/.pnpm/github.com+gc-victor+c-c@b8622aeb7b1f00e143310d105a92d3fadee44ace/node_modules/c-c/dist/c-c.esm.js
+  // node_modules/.pnpm/github.com+gc-victor+c-c@7dbf4d1829fad0d6e4184513ee800a80885691ec/node_modules/c-c/dist/c-c.esm.js
   var e;
-  var n = { css: "", classesNames: {} };
-  function t(t2) {
-    return function t3(r2, s, c) {
-      return s === void 0 && (s = ""), c === void 0 && (c = ""), Object.keys(r2).map(function(o) {
-        var u3 = r2[o];
-        if (u3 === null)
-          return "";
-        if (typeof u3 == "object") {
-          var a2 = /^@m/.test(o);
-          return t3(u3, a2 ? s : (s + o).replace(" ", ""), a2 ? o : c);
-        }
-        var d2 = o + u3 + s + (c || "");
-        if (n.classesNames[d2])
-          return n.classesNames[d2];
-        var i2 = "c" + d2.split("").reduce(function(e2, n2) {
-          return 101 * e2 + n2.charCodeAt(0) >>> 0;
-        }, 11);
-        return function(t4) {
-          typeof document != "undefined" && (e || (e = document.createElement("style"), document.body.appendChild(e)), e.appendChild(document.createTextNode(t4))), typeof document == "undefined" && n.css.indexOf(t4) === -1 && (n.css = n.css + t4);
-        }(function(e2, n2, t4, r3, s2) {
-          var c2 = "." + e2 + r3 + "{" + n2.replace(/[A-Z]|^ms/g, "-$&").toLowerCase() + ":" + t4 + "}";
-          return s2 ? s2 + "{" + c2 + "}" : c2;
-        }(i2, o, u3, s, c)), n.classesNames[d2] = i2, i2;
-      }).join(" ");
-    }(t2);
+  var t = { css: "", classesNames: {} };
+  var n = typeof global != "undefined" && {}.toString.call(global) === "[object global]";
+  var c = !process.env.TEST && n;
+  function s(e2) {
+    return o(e2);
   }
+  function o(n2, s2, r2) {
+    return s2 === void 0 && (s2 = ""), r2 === void 0 && (r2 = ""), Object.keys(n2).map(function(a2) {
+      var u3 = n2[a2];
+      if (u3 === null)
+        return "";
+      if (typeof u3 == "object") {
+        var l = /^@m/.test(a2);
+        return o(u3, l ? s2 : (s2 + a2).replace(" ", ""), l ? a2 : r2);
+      }
+      var d2 = a2 + u3 + s2 + (r2 || "");
+      if (t.classesNames[d2])
+        return t.classesNames[d2];
+      var i2, m2 = "c" + d2.split("").reduce(function(e2, t2) {
+        return 101 * e2 + t2.charCodeAt(0) >>> 0;
+      }, 11);
+      return i2 = function(e2, t2, n3, c2, s3) {
+        var r3 = "." + e2 + c2 + "{" + t2.replace(/[A-Z]|^ms/g, "-$&").toLowerCase() + ":" + n3 + "}";
+        return s3 ? s3 + "{" + r3 + "}" : r3;
+      }(m2, a2, u3, s2, r2), c || (e || document.getElementById("c-c") ? e || (e = document.getElementById("c-c")) : ((e = document.createElement("style")).setAttribute("id", "c-c"), document.body.appendChild(e)), e.appendChild(document.createTextNode(i2))), c && t.css.indexOf(i2) === -1 && (t.css = t.css + i2), t.classesNames[d2] = m2, m2;
+    }).join(" ");
+  }
+  n || (window.process = { env: { TEST: false } });
 
   // src/update-props.js
   var globalAttributes = [
@@ -125,7 +126,7 @@
     const propsClassName = props.className;
     const styles = acc.styles;
     const className = hasStyle || hasPropsClassName || styles ? {
-      className: t({
+      className: s({
         ...hasStyle ? props.style : {},
         ...styles || {}
       }) + (propsClassName ? (hasStyle || styles ? " " : "") + propsClassName : "")
@@ -138,9 +139,9 @@
   }
 
   // src/h-component.js
-  function u2({ attributes: attributes3, children, tag, defaultProps = {}, ...rest }) {
-    const props = rest || {};
-    return h(props.tag || tag, updateProps({ attributes: attributes3, props: { ...defaultProps, ...props } }), children || props.children);
+  function u2({ attributes: attributes3, children, tag, defaultProps = {}, props = {}, ...rest }) {
+    const newProps = { ...props, ...rest };
+    return h(newProps.tag || tag, updateProps({ attributes: attributes3, props: { ...defaultProps, ...newProps } }), [].concat.apply([], typeof children === "string" ? [children] : children));
   }
   var U = u2;
 
@@ -250,6 +251,7 @@
     count = Number(ev.target.value);
   };
   function CounterButton(props) {
+    console.log({ props });
     return /* @__PURE__ */ h(Button, {
       background: "#eee",
       border: "0",
