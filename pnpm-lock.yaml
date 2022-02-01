@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  c-c: github:gc-victor/c-c#main
+  c-c: github:gc-victor/c-c#next
   esbuild: 0.13.4
   esm: 3.2.25
   gzip-size: 6.0.0
@@ -14,7 +14,7 @@ specifiers:
   t-t: git+https://github.com/gc-victor/t-t.git#main
 
 dependencies:
-  c-c: github.com/gc-victor/c-c/b8622aeb7b1f00e143310d105a92d3fadee44ace
+  c-c: github.com/gc-victor/c-c/7dbf4d1829fad0d6e4184513ee800a80885691ec
 
 devDependencies:
   esbuild: 0.13.4
@@ -671,8 +671,8 @@ packages:
     resolution: {integrity: sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==}
     dev: true
 
-  github.com/gc-victor/c-c/b8622aeb7b1f00e143310d105a92d3fadee44ace:
-    resolution: {tarball: https://codeload.github.com/gc-victor/c-c/tar.gz/b8622aeb7b1f00e143310d105a92d3fadee44ace}
+  github.com/gc-victor/c-c/7dbf4d1829fad0d6e4184513ee800a80885691ec:
+    resolution: {tarball: https://codeload.github.com/gc-victor/c-c/tar.gz/7dbf4d1829fad0d6e4184513ee800a80885691ec}
     name: c-c
     version: 0.0.0
     dev: false

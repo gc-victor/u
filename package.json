@@ -26,6 +26,6 @@
         "t-t": "git+https://github.com/gc-victor/t-t.git#main"
     },
     "dependencies": {
-        "c-c": "github:gc-victor/c-c#main"
+        "c-c": "github:gc-victor/c-c#next"
     }
 }
